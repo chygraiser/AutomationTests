@@ -8,7 +8,7 @@ public class SeleniumTests {
     private static final Logger log = LogManager.getLogger(SeleniumTests.class);
 
     public static void main(String[] args) {
-        log.info("TestInfo");
+        log.info("Test Info");
     }
 
 }
