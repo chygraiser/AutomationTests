@@ -58,9 +58,6 @@ public class SeleniumTests {
     @DisplayName(value = "Invalid password Login")
     public void negativeTestPassword(){
 
-        driver.get("https://the-internet.herokuapp.com/login");
-        log.info("Web site is opened");
-
         driver.findElement(By.id("username")).sendKeys("tomsmith");
         driver.findElement(By.id("password")).sendKeys("invalidPassword");
         log.info("Login form is filled with invalid password");
