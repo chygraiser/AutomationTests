@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeleniumTests {
 
@@ -39,6 +41,8 @@ public class SeleniumTests {
 
     }
 
+
+
     @Test
     @DisplayName(value = "Invalid user name Login")
     public void negativeTestUserName(){
@@ -47,6 +51,9 @@ public class SeleniumTests {
         driver.findElement(By.id("username")).sendKeys("invalidUser");
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
         log.info("Login form is filled with invalid user name");
+
+        driver.findElement(By.cssSelector("button[type='submit']")).click();
+        log.info("Login form is submitted with invalid user name");
 
         String errorMessage = driver.findElement(By.cssSelector(".flash.error")).getText();
         Assertions.assertEquals("Your username is invalid!\n×", errorMessage.trim(), "Wrong Login message");
@@ -61,6 +68,9 @@ public class SeleniumTests {
         driver.findElement(By.id("username")).sendKeys("tomsmith");
         driver.findElement(By.id("password")).sendKeys("invalidPassword");
         log.info("Login form is filled with invalid password");
+
+        driver.findElement(By.cssSelector("button[type='submit']")).click();
+        log.info("Login form is submitted with invalid password");
 
         String errorMessage2 = driver.findElement(By.cssSelector(".flash.error")).getText();
         Assertions.assertEquals("Your password is invalid!\n×", errorMessage2.trim(), "Wrong error message");
