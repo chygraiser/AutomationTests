@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -57,6 +58,11 @@ public class HomePageTest {
 
         homePage.clickTitle();
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        String plpName = driver.findElement(By.xpath("//span[@class='a-color-state a-text-bold']")).getText();
+        Assertions.assertThat(plpName).isEqualTo("\"Dresses\"");
+
 
         log.info("Title click test is finished");
 
@@ -72,6 +78,8 @@ public class HomePageTest {
 
         homePage.clickCart();
 
+        String cartPage = driver.findElement(By.xpath("//h2[normalize-space()='Your Amazon Cart is empty']")).getText();
+        Assertions.assertThat(cartPage).isEqualTo("Your Amazon Cart is empty");
 
         log.info("Cart click test is finished");
 
