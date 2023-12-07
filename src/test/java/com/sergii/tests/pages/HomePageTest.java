@@ -17,9 +17,6 @@ public class HomePageTest {
     private HomePage homePage;
     private WebDriver driver;
     private static final Logger log = LogManager.getLogger(HomePageTest.class);
-    
-    
-
 
 
     @BeforeEach
