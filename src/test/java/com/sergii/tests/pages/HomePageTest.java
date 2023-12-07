@@ -3,15 +3,11 @@ package com.sergii.tests.pages;
 import com.sergii.code.pages.HomePage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +17,6 @@ public class HomePageTest {
     private HomePage homePage;
     private WebDriver driver;
     private static final Logger log = LogManager.getLogger(HomePageTest.class);
-    private WebElement revealed;
     
     
 
@@ -36,17 +31,20 @@ public class HomePageTest {
     }
 
     @Test
-    @DisplayName(value = "Logo name test")
-    public void logoTest(){
+    @DisplayName(value = "Text name test")
+    public void textTest(){
 
-        log.info("Logo name test is started");
+        log.info("Text name test is started");
+
+        String text = homePage.getText();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        homePage.getLogoText();
+        homePage.getText();
+        Assertions.assertThat(text).isEqualTo("Make Money with Us");
 
 
-        log.info("Logo name test is finished");
+        log.info("Text name test is finished");
 
     }
 
@@ -56,8 +54,15 @@ public class HomePageTest {
 
         log.info("Title click test is started");
 
-        homePage.clickTitle();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        homePage.clickTitle();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        String plpName = driver.findElement(By.xpath("//span[@class='a-color-state a-text-bold']")).getText();
+        Assertions.assertThat(plpName).isEqualTo("\"Dresses\"");
+
 
         log.info("Title click test is finished");
 
@@ -69,8 +74,12 @@ public class HomePageTest {
 
         log.info("Cart click test is started");
 
-        homePage.clickCart();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        homePage.clickCart();
+
+        String cartPage = driver.findElement(By.xpath("//h2[normalize-space()='Your Amazon Cart is empty']")).getText();
+        Assertions.assertThat(cartPage).isEqualTo("Your Amazon Cart is empty");
 
         log.info("Cart click test is finished");
 

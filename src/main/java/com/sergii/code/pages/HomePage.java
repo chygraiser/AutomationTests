@@ -3,9 +3,11 @@ package com.sergii.code.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.net.URL;
+
 public class HomePage {
 
-    private static final By LOGO = By.xpath("//a[@id='nav-logo-sprites']");
+    private static final By TEXT = By.xpath("//*[text()='Make Money with Us']");
 
     private static final By TITLE = By.xpath("//img[@alt='Dresses']");
 
@@ -17,8 +19,8 @@ public class HomePage {
         this.driver = driver;
     }
 
-    public String getLogoText() {
-       return driver.findElement(LOGO).getText();
+    public String getText() {
+       return driver.findElement(TEXT).getText();
     }
 
     public void clickTitle() {
@@ -31,7 +33,5 @@ public class HomePage {
 
         driver.findElement(CART).click();
     }
-
-
 
 }
