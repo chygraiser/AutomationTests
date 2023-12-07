@@ -13,19 +13,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class HomePageFactoryTest {
 
-
     private HomePageFactory homePageFactory;
     private WebDriver driver;
     private static final Logger log = LogManager.getLogger(HomePageFactoryTest.class);
-
-
-
 
     @BeforeEach
     public void beforeHook() {
@@ -41,6 +36,9 @@ public class HomePageFactoryTest {
     public void textTest(){
 
         log.info("Text name test is started");
+
+       /* WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("glow-ingress-line1")));*/
 
         String text = homePageFactory.getText();
 
@@ -74,7 +72,6 @@ public class HomePageFactoryTest {
         Assertions.assertThat(accountClick).isEqualTo("Sign in");
 
     }
-
 
     @AfterEach
     public void afterHook(){

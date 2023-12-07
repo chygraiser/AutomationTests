@@ -10,14 +10,11 @@ public class ProductDetailsPageFactory {
     @FindBy(id = "productTitle")
     private WebElement titleOfProduct;
 
-
     @FindBy(id = "buy-now-button")
     private WebElement buyNow;
 
     @FindBy(id = "addToCart_feature_div")
     private WebElement addToCart;
-
-
 
     private static WebDriver driver;
 
