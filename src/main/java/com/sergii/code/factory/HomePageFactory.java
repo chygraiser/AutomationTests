@@ -14,8 +14,13 @@ public class HomePageFactory {
     private WebElement country;
 
     @FindBy(id = "nav-link-accountList-nav-line-1")
-
     private WebElement account;
+
+    @FindBy(id = "a-popover-header-1")
+    private WebElement textCountry;
+
+    @FindBy(id = "authportal-main-section")
+    private WebElement getAccountSignIn;
 
     private WebDriver driver;
 
@@ -32,7 +37,16 @@ public class HomePageFactory {
         country.click();
     }
 
+    public String getCountryText() {
+        return textCountry.getText();
+
+    }
+
     public void clickAccount() {
         account.click();
+    }
+
+    public String getAccountFormConfirm() {
+        return getAccountSignIn.getText();
     }
 }

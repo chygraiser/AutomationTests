@@ -16,6 +16,12 @@ public class ProductDetailsPageFactory {
     @FindBy(id = "addToCart_feature_div")
     private WebElement addToCart;
 
+    @FindBy (id = "NATC_SMART_WAGON_CONF_MSG_SUCCESS")
+    private WebElement addToCartMessage;
+
+    @FindBy(id = "authportal-main-section")
+    private WebElement getBuyNow;
+
     private static WebDriver driver;
 
     public ProductDetailsPageFactory (WebDriver driver){
@@ -31,7 +37,15 @@ public class ProductDetailsPageFactory {
         addToCart.click();
     }
 
+    public String getAddToCartMessage() {
+        return  addToCartMessage.getText();
+    }
+
     public void clickBuyNow() {
         buyNow.click();
+    }
+
+    public String getBuyNowConfirm() {
+        return getBuyNow.getText();
     }
 }
